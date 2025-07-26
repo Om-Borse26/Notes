@@ -1,0 +1,3 @@
+database <- reverse engineering (ctrl + r) <- select server <- select database ===> this gives you the entity relationship (ER) diagram
+
+for postgresql, oracle FULL JOIN command works directly but in MySQL we have t do union of left and right join as FULL JOIN command is not supported

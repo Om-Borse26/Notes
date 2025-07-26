@@ -1,0 +1,564 @@
+Introduction to SQL Keywords
+In SQL, the keywords are the reserved words that are used to perform various operations in the database. There are many keywords in SQL, and as SQL is case insensitive, it does not matter if we use, for example, SELECT or select.
+
+List of SQL Keywords
+The examples below explain that SQL keywords can be used for various operations.
+
+1. CREATE
+The CREATE Keyword is used to create a database, table, views, and index. We can create the table CUSTOMER as below.
+
+CREATE TABLE CUSTOMER (CUST_ID INT PRIMARY KEY, NAME VARCHAR(50), STATE VARCHAR(20));
+2. PRIMARY KEY
+This keyword uniquely identifies each of the records.
+
+A Database in SQL can be created with the usage of CREATE DATABASE statement as below:
+
+CREATE DATABASE DATABASE_NAME;
+A View in SQL can be created by using CREATE VIEW as below:
+
+CREATE VIEW VIEW_NAME AS
+SELECT COLUMN1, COLUMN2, COLUMN3...
+FROM TABLE_NAME WHERE [CONDITION];
+3. INSERT
+The INSERT Keyword is used to insert the rows of data into a table. We can insert the rows below to the already created CUSTOMER table using the queries below.
+
+INSERT INTO CUSTOMER VALUES (121,'Rajesh','Maharashtra');
+INSERT INTO CUSTOMER VALUES(256,'Leela','Punjab');
+INSERT INTO CUSTOMER VALUES(908,'Priya','Jharkhand');
+INSERT INTO CUSTOMER VALUES(787,'Rohit','UP');
+The above statements will insert the rows to the table “CUSTOMER”. We can see the result by using a simple SELECT statement below
+
+SELECT * FROM CUSTOMER;
+SQL Keywords op1
+
+4. SELECT
+This keyword is used to select the data from the database or table. The ‘*’ is used in the select statement to select all the columns in a table.
+
+SELECT NAME FROM CUSTOMER; 
+The result of the above query will display the column NAME from the CUSTOMER table below.
+
+SQL Keywords op2
+
+5. FROM
+The keyword indicates the table from which the data is selected or deleted.
+
+6. ALTER
+The Keyword ALTER is used to modify the columns in tables. The ALTER COLUMN statement modifies the data type of a column, and the ALTER TABLE modifies the columns by adding or deleting them.
+
+We can modify the columns of the CUSTOMER table as below by adding a new column, “AGE”.
+
+ALTER TABLE CUSTOMER ADD AGE INT;
+SELECT * FROM CUSTOMER;
+SQL Keywords op3
+
+This query above will add the new column “AGE” with values for all the rows as null. Also, the above statement uses another SQL keyword ‘ADD’.
+
+7. ADD
+This is used to add a column to the existing table.
+
+8. DISTINCT
+The keyword DISTINCT is used to select distinct values. We can use SELECT DISTINCT to select only the distinct values from a table.
+
+Let us add a duplicate value for the state Punjab as below:
+
+INSERT INTO CUSTOMER VALUES(178, 'Pooja', 'Punjab','null');
+The customer table now has the below rows:
+
+SQL Keywords op4
+
+Now we can see the distinct values for the column STATE by using the below query:
+
+SELECT DISTINCT(STATE) FROM CUSTOMER;
+SQL Keywords op5
+
+9. UPDATE
+This keyword is used in an SQL statement to update the existing rows in a table.
+
+UPDATE CUSTOMER SET STATE ='Rajasthan' WHERE CUST_ID= 121;
+SELECT * FROM CUSTOMER;
+SQL Keywords op6
+
+The CUST_ID with value 121 is updated with a new state Rajasthan.
+
+10. SET
+This Keyword is used to specify the column or values to be updated.
+
+11. DELETE
+This is used to delete the existing rows from a table.
+
+DELETE FROM CUSTOMER WHERE NAME='Rajesh';
+The above query will display the below as the row with Name as Rajesh is deleted from the result set.
+
+SQL Keywords op7
+
+While using the DELETE keyword, if we do not use the WHERE clause, all the records will be deleted from the table.
+
+DELETE FROM CUSTOMER;
+The above query will delete all the records of the CUSTOMER table.
+
+12. TRUNCATE
+This is used to delete the data in a table, but it does not delete the structure of the table.
+
+TRUNCATE TABLE CUSTOMER;
+The above query only deletes the data, but the structure of the table remains. So there is no need to re-create the table.
+
+13. AS
+The Keyword AS is used as an alias to rename the column or table.
+
+SELECT CUST_ID AS CUSTOMER_ID, NAME AS CUSTOMER_NAME FROM CUSTOMER;
+The above statement will create the alias for the columns CUST_ID and NAME as below:
+
+SQL Keywords op8
+
+14. ORDER BY
+This is used to sort the result in descending or ascending order. This sorts the result by default in ascending order.
+
+15. ASC
+ This keyword is used for sorting the data returned by the SQL query in ascending order.
+
+SELECT * FROM CUSTOMER ORDER BY NAME ASC;
+SQL Keywords op9
+
+The above query will select all the columns from the CUSTOMER table and sorts the data by the NAME column in ascending order.
+
+16. DESC
+This keyword is to sort the result set in descending order.
+
+SELECT * FROM CUSTOMER ORDER BY CUST_ID DESC;
+SQL Keywords op10
+
+The above query will sort all the selected fields of the table in the descending order of CUST_ID.
+
+17. BETWEEN
+This keyword is used to select values within a given range. The below query uses the BETWEEN keyword to select the CUST_ID and NAME within a given range of values for the CUST_ID.
+
+SELECT CUST_ID, NAME FROM CUSTOMER WHERE CUST_ID BETWEEN 100 AND 500;
+The above query will give the below result
+
+SQL Keywords op11
+
+18. WHERE
+This keyword is used to filter the result set so that only the values satisfying the condition are included.
+
+SELECT * FROM CUSTOMER WHERE STATE ='Punjab';
+The above query selects all the values from the table for which the state is Punjab.
+
+SQL Keywords op12
+
+19. AND
+This keyword is used along with the WHERE clause to select the rows for which both conditions are true.
+
+SELECT * FROM CUSTOMER WHERE STATE ='Punjab' AND CUST_ID= 256;
+The above query will give the result as mentioned below.
+
+SQL Keywords op13
+
+But if one of the conditions is not satisfied, then the query will not return any result, as stated in the below query.
+
+SELECT * FROM CUSTOMER WHERE STATE ='Punjab' AND CUST_ID= 121;
+20. OR
+This is used with the WHERE clause to include the rows in the result set in case of either condition is true.
+
+The below SQL statement will select the fields from the CUSTOMER table if the state is Punjab or UP.
+
+SELECT * FROM CUSTOMER WHERE STATE='Punjab' OR STATE='UP';
+SQL Keywords op14
+
+In the case of the OR keyword, we can see from the above result that if any of the given conditions are true, that gets included in the result set.
+
+21. NOT
+The keyword NOT uses a WHERE clause to include the rows in the result set where a condition is not true.
+
+We can use the NOT keyword in the below query to not include the rows from the state Punjab as below.
+
+SELECT * FROM CUSTOMER WHERE NOT STATE = 'Punjab';
+The query will return the rows with the other states, excluding Punjab in the result set as below:
+
+SQL Keywords op15
+
+22. LIMIT
+This keyword retrieves the records from the table to limit them based on the limit value.
+
+SELECT * FROM CUSTOMER LIMIT 3;
+The above query will select the records from the table CUSTOMER, but it will display only the 3 rows of data from the table as below
+
+SQL Keywords op16
+
+23. IS NULL
+The keyword IS NULL is used to check for NULL values.
+
+The below query will show all the records for which the AGE column has NULL values.
+
+SELECT * FROM CUSTOMER WHERE AGE IS NULL;
+IS NOT NULL
+
+This is used to search the NOT NULL values.
+
+SELECT * FROM CUSTOMER WHERE STATE IS NOT NULL;
+As the column STATE has no null values, the above query will show the below result.
+
+SQL Keywords op17
+
+24. DROP
+The DROP keyword can be used to delete a database, table, view, column, index, etc.
+
+25. DROP COLUMN
+We can delete an existing column in a table using a DROP COLUMN and an ALTER statement. Let us delete the column AGE by using the below query.
+
+ALTER TABLE CUSTOMER DROP COLUMN AGE;
+Drop Column 
+
+We can see that in the above result, the AGE column is dropped.
+
+26. DROP DATABASE
+A database in SQL can be deleted by using the DROP DATABASE statement.
+
+DROP DATABASE DATABASE_NAME;
+27. DROP TABLE
+A table in SQL can be deleted by using a DROP TABLE statement.
+
+DROP TABLE TABLE_NAME;
+We can delete the table CUSTOMER by using the DROP TABLE keyword as below.
+
+But we must be careful while using the DROP TABLE as it will remove the table definition, all the data, indexes, etc.
+
+28. GROUP BY
+This is used along with the aggregate functions like COUNT, MAX, MIN, AVG, SUM, etc., and groups the result set. The below query will group the CUST_ID according to the various states.
+
+SELECT COUNT(CUST_ID),STATE FROM CUSTOMER GROUP BY STATE;
+Group By Clause
+
+The result shows the count of different CUST_ID grouped by states.
+
+29. HAVING
+This keyword is used with aggregate functions and GROUP BY instead of the WHERE clause to filter the values of a result set.
+
+SELECT COUNT(CUST_ID),STATE FROM CUSTOMER GROUP BY STATE HAVING COUNT(CUST_ID)>=2;
+The above query will filter the result set by displaying only those values which satisfy the condition given in the HAVING clause.
+
+Having Clause
+
+The above result set shows the values for which the count of the customer ids is more than 2.
+
+30. IN
+The IN keyword is used within a WHERE clause to specify more than 1 value, or we can say that it can be used instead of the usage of multiple OR keyword in a query.
+
+The query below will select the records for the states Maharashtra, Punjab, and UP by using the IN keyword.
+
+SELECT * FROM CUSTOMER WHERE STATE IN ('Maharashtra','Punjab','UP');
+IN - SQL Keyword
+
+The above result shows the usage of IN keyword, which selects the records only for the states specified within the IN clause.
+
+31. JOIN
+The keyword JOIN combines the rows between two or more tables with related columns among the tables. The JOIN can be INNER, LEFT, RIGHT, OUTER JOIN, etc.
+
+Lets us take another table, ‘CUST_ORDER’, as an example.
+
+Join
+
+We can perform an inner join of the CUSTOMER and CUST_ORDER tables as below.
+
+SELECT CUSTOMER.NAME, CUSTOMER.STATE, CUST_ORDER.ITEM_DES
+FROM CUSTOMER INNER JOIN CUST_ORDER
+ON CUSTOMER.CUST_ID =CUST_ORDER.ID;
+The above query will join the two tables CUSTOMER and CUST_ORDER on the columns CUST_ID and ID and display only the values which are present in both tables.
+
+Join 
+
+This result shows the matching records for cust_id 121,908 and 178, which are common in both tables. But the other cust_ids are excluded as they are not present in the CUST_ORDER table. Similarly, the other JOINs can be performed.
+
+32. UNION
+The UNION keyword combines the distinct values of two or more select statements.
+
+SELECT CUST_ID FROM CUSTOMER UNION SELECT ID FROM CUST_ORDER;
+The above query will show the below result.
+
+Union 
+
+33. UNION ALL
+This keyword combines two or more select statements but allows duplicate values.
+
+SELECT CUST_ID FROM CUSTOMER UNION ALL SELECT ID FROM CUST_ORDER;
+Union All
+
+The above result shows that UNION ALL allows duplicate values which would not be present in the case of UNION.
+
+34. EXISTS
+The keyword EXISTS checks if a certain record exists in a sub-query.
+
+SELECT NAME FROM CUSTOMER WHERE EXISTS (SELECT ITEM_DES FROM CUST_ORDER WHERE CUST_ID = ID);
+The above query will return true as the sub-query returns the below values.
+
+Exists
+
+35. LIKE
+This keyword is used to search along with a WHERE clause for a particular pattern. Wildcard % is used to search for a pattern.
+
+In the below query, let us search for a pattern ‘ya’ which occurs in the column ‘NAME’.
+
+SELECT NAME FROM CUSTOMER WHERE NAME LIKE '%ya';
+SQL Keywords 
+
+36. CASE
+This keyword is used to display different outputs according to different conditions.
+
+SELECT CUST_ID, NAME,
+CASE WHEN STATE = 'Punjab' THEN "State is Punjab"
+ELSE "State is NOT Punjab"
+END AS Output
+FROM CUSTOMER;
+Unique Columns - Like 
+
+A few other keywords are DEFAULT, used to provide a default value for a column, UNIQUE, used to ensure all the values in a column are unique; etc.
+
+Conclusion
+The various keywords in SQL provide flexibility in designing a database, tables, etc. They provide the designer with many features that become very useful while making changes after the design is completed.
+
+
+
+
+
+
+
+
+
+
+
+Introduction to Cheat Sheet SQL
+SQL, often called Structured Query Language, is a declarative and multi-paradigm language that is the domain-specific language used for designing and managing data models to organize the data in relational model databases. Donald Chamberlin and Raymond Boyce designed SQL. SQL first appeared in the year 1974. SQL is static typing and a strong discipline. SQL supports cross-platform operating systems. The file extension will be .sql and was developed by ISO/IEC. SQL has different sublanguages called statements to perform different operations based on the required operation.
+
+Commands and Content on Cheatsheet SQL
+Cheatsheet SQL commands can be classified into Data Definition Commands, Data Manipulation Commands, and Data Control Commands.
+
+Below are the Cheatsheet SQL commands mentioned, which perform different kinds of operations:
+
+Query	Description
+Data Manipulation Commands
+Select * from <table_name>;	To query the entire data from the mentioned table.
+Select col1, col2 from <table_name>;	To retrieve two columns from a table.
+Select col1, col2 from table WHERE condition;	To query data from a table based on a condition.
+Select distinct col from <table_name>;	To query distinct records from a table.
+Select distinct col from table WHERE condition;	To filter the data, query distinct records from a table based on a condition.
+Select col1, col2 from table ORDER BY col2 ASC;	To query data from a table and sort the retrieved records in ascending order.
+Select col1, col2 from table ORDER BY col2 DESC;	To query data from a table and sort the retrieved records in descending order.
+Select aggregate(col1), col2 from table GROUP BY col2;	To query data from the table to aggregate the data based on a column.
+Select aggregate(col1), col2 from table GROUP BY col2 HAVING condition;	To query data from the table to aggregate the data based on a column and a condition.
+Select col1, col2 from table1 INNER JOIN table2 ON condition;	To query data from multiple tables and inner join the result based on a condition and display a single result.
+Select col1, col2 from table1 LEFT JOIN table2 ON condition;	To query data from multiple tables and left join the result based on a condition and display it as a single result.
+Select col1, col2 from table1 RIGHT JOIN table2 ON condition;	To query data from multiple tables, right-join the result based on a condition and display it as a single result.
+Select col1, col2 from table1 FULL OUTER JOIN table2 ON condition;	To query data from multiple tables and fully outer join the result based on a condition and display it as a single result.
+Select col1, col2 from table1 CROSS JOIN table2;	To query data from multiple tables and cross-join the result to obtain a Cartesian product of the records and display it as a single result.
+Select col1, col2 from table1 UNION select col1, col2 from table2;	To query data from multiple tables and combine the results of records from two tables.
+Data Definition Commands
+CREATE TABLE table_name (col_name DATA_TYPE CONSTRAINT);	To create a table with new columns and all the column definitions can be mentioned by a comma.
+ALTER TABLE table_name;	To add a new column to the table.
+DROP TABLE table_name;	To delete the entire table from the database.
+INSERT INTO table_name(list of columns) VALUES(list of values);	To insert data into a table for one record.
+UPDATE table SET col1=updated_value;	To update a cell value in a table based on the column name.
+UPDATE table SET col1=updated_value1, col2=updated_value2 WHERE condition;	To update multiple cell values in a table based on column names and conditions.
+DELETE FROM table_name;	To delete the complete data in a table.
+DELETE FROM table_name WHERE condition;	To delete the complete data in a table based on a condition.
+Data Control Commands
+GRANT <Object Privileges> ON <Object Name> TO <user> [GRANT OPTION]	To grant access to a particular user based on the grant option and access requirement.
+REVOKE <Object Privileges> ON <Object Name> FROM <user>	To revoke access to a particular user from a particular object.
+Free Tips and Tricks for Using Cheatsheet SQL Commands
+The SQL cheat sheet commands can be used in any IDE or tool where the user has connected to the database using the JAR file of the database type.
+The different databases in the market are Oracle, Microsoft SQL Server, IBM DB2, etc., which can be connected using their respective jars and tools to manage the data operations.
+There is a different cheat sheet for SQL Aggregate Functions to be used, and the SQL cheat sheet commands to perform complex operations based on the required data to query as below.
+Function	Description
+COUNT	To count the number of elements in a list.
+SUM	To return the total sum of the elements in a list.
+AVG	To return the average of a list.
+MIN	To return the minimum value from a list.
+MAX	To return the maximum value from a list.
+VIEWS can also be managed and created using a cheat sheet for SQL commands.
+INDEXES and TRIGGERS can also be managed using cheat sheet SQL commands.
+The different cheat sheet SQL Operators are Arithmetic operators, Logical operators, Comparison operators, and Negation Operators, similar to the general-purpose programming languages.
+The different cheat sheet for SQL Expressions is Numeric, Boolean, and Date.
+The different SQL Constraints are the rules to execute the commands on the table columns to ensure reliability, redundancy, and accuracy while performing operations on a table.
+In the case of integrity, Referential Integrity plays a major role in performing integrity constraints along with the commands. The different constraints available are Integrity constraints and Dropping constraints.
+SQL Injection is another concept where the user-submitted data should always be validated before processing or running the query to avoid data breach and to ensure safe and secure data operations without any data loss.
+Conclusion
+SQL is used to perform database operations on many relational model databases to perform several crud operations. The common language for all relational model databases is SQL (Structured Query Language). The formula only differs in all the databases. All the features in SQL cheat sheet commands can be used to perform mostly all the complex operations or data requirements in any application or directly to generate reports or data files to export or import to or from respectively from the databases.
+
+
+
+
+
+
+
+
+
+
+
+What is Composite Key in SQL?
+The Composite Key in SQL is a combination of two or more columns, which are used to identify the rows from a table. Here individually the specified columns will not be unique, the combination of the columns gets the uniqueness and able to fetch data from the table. A composite key is derived from a combination of two or more columns that combined make a unique column, which individually does not provide uniqueness. We can use all foreign keys in the composite keys. Data types specified in the composite key can be different.
+
+It is derived in the form of below pattern:
+
+CONSTRAINT COMP_NAME PRIMARY KEY (Col1, Col2)
+When does Composite Key Come to the picture?
+In a table sometimes, we do not have any unique column, which could be defined as a primary key. In such a case, we combine two or more columns from a table, make it unique, and use it as the primary key in a table. This combined columns or attributes are called Composite Key.
+
+Syntax:
+
+Create table table_name (
+Col1 data_type_1,
+Col2 data_type_2,
+Col3 data_type_3,
+Col4 data_type_4,
+….
+CONSTRAINT COMP_NAME PRIMARY KEY (Col1, Col2)  ---------- Composite key declaration------------
+);
+How to use Composite Key in SQL?
+Before going with the usage let go step by step by differentiating primary and composite key.
+
+1. Primary Key Declaration
+SQL Syntax declaration for PRIMARY KEY Constraint defines as below:
+
+Code:
+
+Create table table_name (
+Col1 data_type_1 NOT NULL,
+Col2 data_type_2 NOT NULL,
+Col3 data_type_3,
+Col4 data_type_4,
+….
+PRIMARY KEY (Col1)                   ------------ Primary key declaration---------------------
+);
+(OR)
+Create table table_name (
+Col1 data_type_1 PRIMARY KEY,    ------------ Primary key declaration---------------------
+Col2 data_type_2 NOT NULL,
+Col3 data_type_3,
+Col4 data_type_4,
+….
+);
+2. Composite Key Declaration
+SQL Syntax declaration for COMPOSITE KEY Constraint defines as below: –
+
+Code:
+
+Create table table_name (
+Col1 data_type_1 NOT NULL,
+Col2 data_type_2 NOT NULL,
+Col3 data_type_3,
+Col4 data_type_4,
+….
+CONSTRAINT COMP_NAME PRIMARY KEY (Col1, Col2)     ------------ Composite key declaration-----------------
+);
+Example:
+
+Create table Personal (
+Person_ID INT NOT NULL,
+Person_FNAME VARCHAR (25),
+Person_LNAME VARCHAR (25),
+Person_PHONE INT,
+Person_ADDRESS VARCHAR (25),
+CONSTRAINT COMP_KEY PRIMARY KEY (Person_ID, Person_PHONE)   ------------ Composite key declaration--------
+);
+Here in the above example, we are creating a table called “stud”, in which “S_FNAME” and “S_LNAME” combined becomes a composite key. A composite key will be unique and NOT NULL.
+
+Examples of Composite Key in SQL
+Let us consider an example in which we derive the composite key.
+
+Example #1
+a. SQL query for the Customer table
+
+Code:
+
+Create table Cust34  (
+Customer34_ID INT NOT NULL,
+Customer34_FNAME VARCHAR (25),
+Customer34_LNAME VARCHAR (25),
+Customer34_ADDRESS VARCHAR (25),
+Customer34_PHONE INT,
+PRIMARY KEY (C_ID)   ------------ Primary key declaration--------
+);
+Customer Table:
+
+table
+
+composite key
+
+Here in the above table, we have “C_ID” which is unique and NOT NULL. This will act as a foreign key in the “Orders “Table.
+
+b. SQL query for the Order table
+
+Code:
+
+Create table Order_34 (
+Customer_ID INT NOT NULL,
+ORD_ID INT NOT NULL,
+PROD_ID INT NOT NULL,
+QUANT INT,
+CONSTRAINT COMP_K PRIMARY KEY (CUST_ID, ORD_ID, PROD_ID) -------- Composite key declaration-------
+);
+Order Table
+
+composite key
+
+table
+
+composite key
+
+Here in the above “Order” table, we have columns such as “Customer_ID”, “ORD_ID”, “PROD_ID” and “QUANT”. Here “Customer_ID” is a primary key in the table “Cust34”. However, in the table “order”, it is duplicated and we cannot make it as the primary key. It goes the same with the “ORD_ID” and “PROD_ID”.
+
+Therefore, we have combined all the three columns and make it to a composite key. Let us take another example to derive the composite key.
+
+Example #2
+SQL query for the Stud table
+
+Code:
+
+Create table Stud_attendance_34 (
+STU_NAME VARCHAR(25) NOT NULL,
+DATE_VALUE  DATE  NOT NULL,
+CLASS_PERIOD INT NOT NULL,
+PRESENCE_OF_STUDENT VARCHAR(15),
+CONSTRAINT COMP_K PRIMARY KEY (STU_NAME, DATE_VALUE, CLASS_PERIOD) -------- Composite key declaration-------
+);
+Below table consists of attendance details about the student:-
+
+table
+
+composite key
+
+Here in the above example, we are deriving the attendance of students present in each day. Here the columns “STU_NAME”,” DATE”, “CLASS_PERIOD” and “PRESENCE_OF_STUDENT” individually won’t be able to fetch a row as they consist of duplicates.
+
+Here we have to combine two or more columns to make a unique value. In the above example, we will consider “STU_NAME”, “DATE” and “CLASS_PERIOD” combine as a composite key, which will be used to fetch the rows from the table.
+
+How to ALTER and DROP composite key?
+After the declaration of the composite key, sometimes you want to make changes in the columns specified in the composite key. This can be done by the “ALTER” command.
+
+1. ALTER Composite Key
+If you want to alter the composite key from the existing table. We use the below syntax.
+
+Syntax:
+
+Alter table <table_name>
+ADD CONSTRAINT <Const_name> PRIMARY KEY (COL1_NAME, COL2_NAME,… , N);
+Example:
+
+Alter table Order_34
+DROP CONSTRAINT (CUST_ID, ORD_ID, PROD_ID, <new_columnname>);
+2. DROP Composite Key
+If you want to drop the composite key from the existing table. We use the below syntax.
+
+Syntax:
+
+Alter table <tab_name>
+DROP CONSTRAINT <CONST_NAME>;
+Example:
+
+Alter table Order_34
+DROP CONSTRAINT (CUST_ID, ORD_ID, PROD_ID);
+Conclusion
+Things that need to be kept in mind for the composite key is mentioned in below points: –
+
+Composite key = two or more columns
+Composite is NOT NULL and UNIQUE
+Foreign key will be included in the composite key
+After identification of the composite key, we mention it as a primary key in the table. Which will be used for the identification of the rows from the table.
+The main difference between the primary key and the composite key is the primary key is derived by a column that is unique. Composite is derived by a combination of two or columns. Individually they are not unique but combined they provide uniqueness.
